@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐱 猫咪管理系统 - Cloudflare 一键部署</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .step-card {
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .code-block {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-4">🐱 猫咪管理系统</h1>
+            <p class="text-xl opacity-90">Cloudflare 一键部署指南</p>
+            <p class="mt-2 opacity-75">跟着步骤操作，5分钟完成部署！</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <!-- Prerequisites -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-blue-100 text-blue-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm">📋</span>
+                部署前准备
+            </h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl mb-2">📧</div>
+                    <div class="font-medium">GitHub 账号</div>
+                    <div class="text-sm text-gray-500">没有就去注册一个</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl mb-2">☁️</div>
+                    <div class="font-medium">Cloudflare 账号</div>
+                    <div class="text-sm text-gray-500">免费注册即可</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 text-center">
+                    <div class="text-3xl mb-2">💻</div>
+                    <div class="font-medium">电脑终端</div>
+                    <div class="text-sm text-gray-500">Mac/Windows 都行</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                Fork 项目到你的 GitHub
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="mb-2">1. 打开项目页面：</p>
+                    <a href="https://github.com/joy-cbo/cat" target="_blank" class="inline-block bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+                        👉 https://github.com/joy-cbo/cat
+                    </a>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="mb-2">2. 点击右上角的 <strong>"Fork"</strong> 按钮</p>
+                    <div class="text-sm text-gray-500">就是那个分叉形状的图标 ↗️</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="mb-2">3. 点击绿色的 <strong>"Create fork"</strong> 按钮</p>
+                    <div class="text-sm text-gray-500">完成后你的 GitHub 上就有了 <code class="bg-gray-200 px-1 rounded">你的用户名/cat</code> 仓库</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">2</span>
+                注册 Cloudflare 账号
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="mb-2">打开注册页面：</p>
+                    <a href="https://dash.cloudflare.com/sign-up" target="_blank" class="inline-block bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition">
+                        👉 https://dash.cloudflare.com/sign-up
+                    </a>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p>填写邮箱和密码，点击 <strong>"Create account"</strong>，完成邮箱验证即可</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">3</span>
+                安装 Wrangler CLI 工具
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-900 rounded-lg p-4 text-white">
+                    <div class="text-sm text-gray-400 mb-2">Mac 用户：</div>
+                    <code class="code-block text-green-400 block">npm install -g wrangler</code>
+                </div>
+                <div class="bg-gray-900 rounded-lg p-4 text-white">
+                    <div class="text-sm text-gray-400 mb-2">Windows 用户（在 PowerShell 中运行）：</div>
+                    <code class="code-block text-green-400 block">npm install -g wrangler</code>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex items-start">
+                        <span class="text-yellow-600 mr-2">💡</span>
+                        <div class="text-sm">如果没有安装 Node.js，先去 <a href="https://nodejs.org" target="_blank" class="text-blue-600 underline">nodejs.org</a> 下载安装</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                登录 Cloudflare
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-900 rounded-lg p-4 text-white">
+                    <code class="code-block text-green-400 block">wrangler login</code>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p>浏览器会自动打开，点击 <strong>"Allow"</strong> 授权即可</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">5</span>
+                创建 Cloudflare 资源
+            </h2>
+            <div class="space-y-4">
+                <p class="text-gray-600">在终端依次运行以下命令：</p>
+                
+                <!-- Command 1 -->
+                <div class="relative">
+                    <div class="bg-gray-900 rounded-lg p-4 text-white">
+                        <div class="text-sm text-gray-400 mb-2"># 1. 创建数据库</div>
+                        <code class="code-block text-green-400 block" id="cmd1">wrangler d1 create cat-manager-db</code>
+                    </div>
+                    <button onclick="copyCommand('cmd1')" class="copy-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                        📋 复制
+                    </button>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <div class="flex items-start">
+                        <span class="text-blue-600 mr-2">📝</span>
+                        <div class="text-sm">运行后会显示 <code class="bg-blue-100 px-1 rounded">database_id = "xxxx"</code>，<strong>复制这个 ID 保存好！</strong></div>
+                    </div>
+                </div>
+
+                <!-- Command 2 -->
+                <div class="relative">
+                    <div class="bg-gray-900 rounded-lg p-4 text-white">
+                        <div class="text-sm text-gray-400 mb-2"># 2. 创建存储桶</div>
+                        <code class="code-block text-green-400 block" id="cmd2">wrangler r2 bucket create cat-manager-r2</code>
+                    </div>
+                    <button onclick="copyCommand('cmd2')" class="copy-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                        📋 复制
+                    </button>
+                </div>
+
+                <!-- Command 3 -->
+                <div class="relative">
+                    <div class="bg-gray-900 rounded-lg p-4 text-white">
+                        <div class="text-sm text-gray-400 mb-2"># 3. 创建 KV 命名空间</div>
+                        <code class="code-block text-green-400 block" id="cmd3">wrangler kv namespace create KV</code>
+                    </div>
+                    <button onclick="copyCommand('cmd3')" class="copy-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                        📋 复制
+                    </button>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <div class="flex items-start">
+                        <span class="text-blue-600 mr-2">📝</span>
+                        <div class="text-sm">运行后会显示 <code class="bg-blue-100 px-1 rounded">id = "xxxx"</code>，<strong>复制这个 KV ID 保存好！</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">6</span>
+                获取 Cloudflare 账号信息
+            </h2>
+            <div class="space-y-4">
+                <!-- Account ID -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-bold text-gray-800 mb-2">获取 Account ID：</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>打开 <a href="https://dash.cloudflare.com" target="_blank" class="text-blue-600 underline">Cloudflare 控制台</a></li>
+                        <li>点击右侧边栏的 <strong>"Workers & Pages"</strong></li>
+                        <li>右侧会显示 <strong>"Account ID"</strong></li>
+                        <li><strong class="text-red-600">复制这个 ID 保存好！</strong></li>
+                    </ol>
+                </div>
+
+                <!-- API Token -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-bold text-gray-800 mb-2">获取 API Token：</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>打开 <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" class="text-blue-600 underline">API Tokens 页面</a></li>
+                        <li>点击 <strong>"Create Token"</strong></li>
+                        <li>选择 <strong>"Cloudflare Pages - Edit"</strong> 模板</li>
+                        <li>点击 <strong>"Continue to summary"</strong></li>
+                        <li>点击 <strong>"Create Token"</strong></li>
+                        <li><strong class="text-red-600">复制这个 Token 保存好！（只显示一次）</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">7</span>
+                配置 GitHub Secrets
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>打开你的仓库 <code class="bg-gray-200 px-1 rounded">https://github.com/你的用户名/cat</code></li>
+                        <li>点击 <strong>"Settings"</strong> 标签</li>
+                        <li>左侧点击 <strong>"Secrets and variables"</strong> → <strong>"Actions"</strong></li>
+                        <li>点击 <strong>"New repository secret"</strong></li>
+                    </ol>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-2 text-left">Name</th>
+                                <th class="px-4 py-2 text-left">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            <tr>
+                                <td class="px-4 py-2"><code class="bg-gray-100 px-1 rounded">CLOUDFLARE_API_TOKEN</code></td>
+                                <td class="px-4 py-2">第 6 步复制的 API Token</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2"><code class="bg-gray-100 px-1 rounded">CLOUDFLARE_ACCOUNT_ID</code></td>
+                                <td class="px-4 py-2">第 6 步复制的 Account ID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">8</span>
+                配置数据库 ID
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>克隆你的仓库到本地：
+                            <div class="relative mt-2">
+                                <div class="bg-gray-900 rounded-lg p-3 text-white">
+                                    <code class="code-block text-green-400 block" id="cmd4">git clone https://github.com/你的用户名/cat.git<br>cd cat</code>
+                                </div>
+                                <button onclick="copyCommand('cmd4')" class="copy-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                                    📋 复制
+                                </button>
+                            </div>
+                        </li>
+                        <li>用文本编辑器打开 <code class="bg-gray-200 px-1 rounded">wrangler.toml</code> 文件</li>
+                        <li>修改以下内容（替换成你自己的 ID）：</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-900 rounded-lg p-4 text-white overflow-x-auto">
+                    <pre class="code-block text-sm"><span class="text-gray-400">[[d1_databases]]</span>
+<span class="text-blue-400">binding</span> = <span class="text-green-400">"DB"</span>
+<span class="text-blue-400">database_name</span> = <span class="text-green-400">"cat-manager-db"</span>
+<span class="text-blue-400">database_id</span> = <span class="text-yellow-400">"粘贴你的 database_id"</span>  <span class="text-gray-500"># ← 替换</span>
+
+<span class="text-gray-400">[[r2_buckets]]</span>
+<span class="text-blue-400">binding</span> = <span class="text-green-400">"R2"</span>
+<span class="text-blue-400">bucket_name</span> = <span class="text-green-400">"cat-manager-r2"</span>
+
+<span class="text-gray-400">[[kv_namespaces]]</span>
+<span class="text-blue-400">binding</span> = <span class="text-green-400">"KV"</span>
+<span class="text-blue-400">id</span> = <span class="text-yellow-400">"粘贴你的 KV ID"</span>  <span class="text-gray-500"># ← 替换</span>
+
+<span class="text-gray-400">[vars]</span>
+<span class="text-blue-400">JWT_SECRET</span> = <span class="text-yellow-400">"改成一个复杂的密码"</span>  <span class="text-gray-500"># ← 改成你自己的</span></pre>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <p class="mb-2">保存后提交代码：</p>
+                    <div class="relative">
+                        <div class="bg-gray-900 rounded-lg p-3 text-white">
+                            <code class="code-block text-green-400 block" id="cmd5">git add wrangler.toml<br>git commit -m "配置 Cloudflare 资源 ID"<br>git push</code>
+                        </div>
+                        <button onclick="copyCommand('cmd5')" class="copy-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm">
+                            📋 复制
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 9 -->
+        <div class="step-card bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="bg-purple-100 text-purple-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">9</span>
+                等待自动部署
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-green-50 border-l-4 border-green-400 p-4">
+                    <div class="flex items-start">
+                        <span class="text-green-600 mr-2">✅</span>
+                        <div>推送代码后，GitHub Actions 会自动完成部署！</div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-bold mb-2">查看部署状态：</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>打开你的 GitHub 仓库</li>
+                        <li>点击 <strong>"Actions"</strong> 标签</li>
+                        <li>可以看到正在进行的部署</li>
+                    </ol>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <h3 class="font-bold mb-2">获取访问地址：</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-sm">
+                        <li>打开 <a href="https://dash.cloudflare.com" target="_blank" class="text-blue-600 underline">Cloudflare 控制台</a></li>
+                        <li>点击 <strong>"Workers & Pages"</strong></li>
+                        <li>找到 <strong>"cat-manager"</strong> 项目</li>
+                        <li>点击进入，可以看到你的网站地址！</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 10 -->
+        <div class="step-card bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl shadow-lg p-6 mb-6 text-white">
+            <h2 class="text-2xl font-bold mb-4 flex items-center">
+                <span class="bg-white bg-opacity-20 w-8 h-8 rounded-full flex items-center justify-center mr-3 text-sm font-bold">10</span>
+                🎉 部署完成！
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-white bg-opacity-20 rounded-lg p-4">
+                    <h3 class="font-bold mb-2">首次访问设置：</h3>
+                    <ol class="list-decimal list-inside space-y-2">
+                        <li>点击 Cloudflare 给你的网站地址</li>
+                        <li>第一个注册的用户会自动成为<strong>管理员</strong>！</li>
+                        <li>填写邮箱和密码，点击注册</li>
+                    </ol>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl mb-2">🌐</div>
+                        <div class="font-medium">你的网站地址</div>
+                        <div class="text-sm opacity-75">Cloudflare 给的</div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl mb-2">📱</div>
+                        <div class="font-medium">手机也能访问</div>
+                        <div class="text-sm opacity-75">随时随地管理</div>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded-lg p-4 text-center">
+                        <div class="text-2xl mb-2">🔒</div>
+                        <div class="font-medium">数据安全</div>
+                        <div class="text-sm opacity-75">自动备份</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">❓ 常见问题</h2>
+            <div class="space-y-4">
+                <details class="bg-gray-50 rounded-lg">
+                    <summary class="p-4 cursor-pointer font-medium hover:bg-gray-100 transition">部署失败怎么办？</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600">
+                        <ol class="list-decimal list-inside space-y-1">
+                            <li>检查 GitHub Secrets 是否正确</li>
+                            <li>检查 wrangler.toml 中的 ID 是否正确</li>
+                            <li>在 Actions 页面查看错误日志</li>
+                        </ol>
+                    </div>
+                </details>
+                
+                <details class="bg-gray-50 rounded-lg">
+                    <summary class="p-4 cursor-pointer font-medium hover:bg-gray-100 transition">如何更新代码？</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600">
+                        <code class="bg-gray-200 px-1 rounded">git pull && git push</code> 推送后会自动重新部署！
+                    </div>
+                </details>
+                
+                <details class="bg-gray-50 rounded-lg">
+                    <summary class="p-4 cursor-pointer font-medium hover:bg-gray-100 transition">需要付费吗？</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600">
+                        Cloudflare 免费套餐完全够用：D1 5GB、R2 10GB、Pages 无限部署
+                    </div>
+                </details>
+                
+                <details class="bg-gray-50 rounded-lg">
+                    <summary class="p-4 cursor-pointer font-medium hover:bg-gray-100 transition">数据会丢失吗？</summary>
+                    <div class="px-4 pb-4 text-sm text-gray-600">
+                        不会！Cloudflare D1 会自动备份你的数据。
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">🔗 相关链接</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <a href="https://github.com/joy-cbo/cat" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-2xl mr-3">📦</span>
+                    <div>
+                        <div class="font-medium">GitHub 仓库</div>
+                        <div class="text-sm text-gray-500">查看源代码</div>
+                    </div>
+                </a>
+                <a href="https://dash.cloudflare.com" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-2xl mr-3">☁️</span>
+                    <div>
+                        <div class="font-medium">Cloudflare 控制台</div>
+                        <div class="text-sm text-gray-500">管理你的服务</div>
+                    </div>
+                </a>
+                <a href="https://developers.cloudflare.com/pages/" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-2xl mr-3">📖</span>
+                    <div>
+                        <div class="font-medium">Cloudflare Pages 文档</div>
+                        <div class="text-sm text-gray-500">官方文档</div>
+                    </div>
+                </a>
+                <a href="https://developers.cloudflare.com/d1/" target="_blank" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <span class="text-2xl mr-3">💾</span>
+                    <div>
+                        <div class="font-medium">D1 数据库文档</div>
+                        <div class="text-sm text-gray-500">了解数据库</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="mb-2">🐱 猫咪管理系统</p>
+            <p class="text-sm text-gray-400">Built with Nuxt 3 + Cloudflare</p>
+        </div>
+    </footer>
+
+    <script>
+        function copyCommand(id) {
+            const el = document.getElementById(id);
+            const text = el.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = el.parentElement.querySelector('.copy-btn');
+                const originalText = btn.innerText;
+                btn.innerText = '✅ 已复制';
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
