@@ -69,16 +69,19 @@ npm run dev
 
 | 类型 | 说明 |
 |------|------|
-| 疫苗 | 疫苗名称、批次、接种机构、下次接种日期 |
-| 驱虫 | 药品名称、用药剂量、下次驱虫日期 |
-| 就医 | 就诊原因、诊断结果、处方、费用 |
-| 体检 | 体检项目、结果异常项、建议 |
-| 体重 | 体重记录，用于趋势图 |
+| vaccine | 疫苗名称、批次号、医院、下次接种日期 |
+| deworming | 药品名称、用药剂量 |
+| sterilization | 绝育记录 |
+| visit | 就诊原因、诊断结果、处方、费用 |
+| checkup | 体检项目、结果 |
+| weight | 体重记录，用于趋势图 |
+| care | 日常护理（刷牙、洗耳等） |
 
 ### 4. 提醒系统
 
 - 疫苗到期提醒
 - 驱虫提醒
+- 体检提醒
 - 自定义提醒
 - 邮件通知（Resend）
 
@@ -158,7 +161,8 @@ GET /api/cats
     "breed": "英短",
     "gender": "female",
     "weight": 4.5,
-    "avatar": "/uploads/cat1.jpg"
+    "avatar_url": "/uploads/cat1.jpg",
+    "status": "active"
   }
 ]
 ```
@@ -176,7 +180,8 @@ POST /api/cats
   "breed": "英短",
   "gender": "female",
   "birthDate": "2023-01-15",
-  "weight": 4.5
+  "weight": 4.5,
+  "homeDate": "2023-02-01"
 }
 ```
 
@@ -206,10 +211,12 @@ POST /api/cats/:id/records
 ```json
 {
   "type": "vaccine",
-  "title": "猫三联",
   "date": "2026-06-21",
-  "notes": "首次接种",
-  "nextDate": "2027-06-21"
+  "vaccineName": "猫三联",
+  "batchNumber": "AB123456",
+  "hospital": "宠物医院",
+  "nextDate": "2027-06-21",
+  "notes": "首次接种"
 }
 ```
 
@@ -246,9 +253,8 @@ POST /api/reminders
 {
   "catId": 1,
   "type": "vaccine",
-  "title": "疫苗接种",
-  "dueDate": "2027-06-21",
-  "repeat": "yearly"
+  "remindAt": "2027-06-21T09:00:00",
+  "notes": "疫苗接种提醒"
 }
 ```
 
@@ -303,6 +309,25 @@ GET /api/stats
 
 ---
 
+### 邮件测试
+
+```
+POST /api/email/test
+```
+
+**请求体：**
+```json
+{
+  "to": "user@example.com",
+  "catName": "小花",
+  "type": "vaccine",
+  "remindDate": "2027-06-21",
+  "notes": "疫苗接种提醒"
+}
+```
+
+---
+
 ## 数据库设计
 
 ### users 表
@@ -321,30 +346,38 @@ GET /api/stats
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | id | INTEGER | 主键 |
-| user_id | INTEGER | 外键关联 users |
+| owner_id | INTEGER | 外键关联 users |
 | name | TEXT | 猫咪名字 |
 | breed | TEXT | 品种 |
-| gender | TEXT | 性别 |
+| gender | TEXT | male/female |
 | birth_date | DATE | 出生日期 |
 | color | TEXT | 颜色 |
 | weight | REAL | 体重 |
-| avatar | TEXT | 头像路径 |
-| status | TEXT | 在家/送养/离世 |
+| avatar_url | TEXT | 头像路径 |
+| home_date | DATE | 入家日期 |
+| status | TEXT | active/adopted/passed |
+| chip_number | TEXT | 芯片号 |
 | notes | TEXT | 备注 |
 | created_at | DATETIME | 创建时间 |
 
-### records 表
+### health_records 表
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | id | INTEGER | 主键 |
 | cat_id | INTEGER | 外键关联 cats |
-| type | TEXT | vaccine/deworming/medical/checkup/weight |
-| title | TEXT | 记录标题 |
+| type | TEXT | vaccine/deworming/sterilization/visit/checkup/weight/care |
 | date | DATE | 记录日期 |
-| notes | TEXT | 备注 |
-| cost | REAL | 费用 |
+| vaccine_name | TEXT | 疫苗名称（疫苗类型） |
+| batch_number | TEXT | 批次号（疫苗类型） |
+| hospital | TEXT | 医院/机构 |
 | next_date | DATE | 下次日期 |
+| medicine_name | TEXT | 药品名称（驱虫类型） |
+| dosage | TEXT | 用药剂量 |
+| diagnosis | TEXT | 诊断结果（就医类型） |
+| prescription | TEXT | 处方 |
+| cost | REAL | 费用 |
+| notes | TEXT | 备注 |
 | created_at | DATETIME | 创建时间 |
 
 ### reminders 表
@@ -353,11 +386,10 @@ GET /api/stats
 |------|------|------|
 | id | INTEGER | 主键 |
 | cat_id | INTEGER | 外键关联 cats |
-| type | TEXT | 提醒类型 |
-| title | TEXT | 提醒标题 |
-| due_date | DATE | 到期日期 |
-| repeat | TEXT | 重复周期 |
-| completed | BOOLEAN | 是否完成 |
+| type | TEXT | vaccine/deworming/checkup/custom |
+| remind_at | DATETIME | 提醒时间 |
+| done | INTEGER | 是否完成（0/1） |
+| notes | TEXT | 备注 |
 | created_at | DATETIME | 创建时间 |
 
 ---

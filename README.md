@@ -100,13 +100,18 @@ id = "你的KV命名空间ID"
 ## 项目结构
 
 ```
-cat-manager/
+cat/
 ├── .github/workflows/    # GitHub Actions
 ├── pages/               # 页面路由
 ├── server/              # API 路由
 │   ├── api/             # API 端点
 │   └── database/        # 数据库 Schema
-├── public/              # 静态资源
+├── components/          # Vue 组件
+├── composables/         # 组合式函数
+├── stores/              # Pinia 状态管理
+├── assets/              # 静态资源
+├── public/              # 公共文件
+├── docs/                # 文档
 ├── wrangler.toml        # Cloudflare 配置
 └── nuxt.config.ts       # Nuxt 配置
 ```
@@ -116,6 +121,7 @@ cat-manager/
 ```
 POST /api/auth/register     → 注册（首用户自动成为管理员）
 POST /api/auth/login        → 登录
+POST /api/auth/logout       → 登出
 GET  /api/auth/me           → 获取当前用户
 
 GET/POST /api/cats          → 猫咪列表/添加
@@ -126,8 +132,10 @@ PUT/DELETE /api/records/:id    → 更新/删除记录
 
 GET/POST /api/reminders     → 提醒列表/添加
 PUT /api/reminders/:id/complete → 完成提醒
+DELETE /api/reminders/:id   → 删除提醒
 
 POST /api/upload            → 图片上传
+POST /api/email/test        → 测试邮件发送
 GET  /api/stats             → 数据统计
 ```
 
