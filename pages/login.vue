@@ -19,12 +19,22 @@
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700">密码</label>
-            <input
-              v-model="form.password"
-              type="password"
-              required
-              class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-indigo-500 focus:border-indigo-500"
-            />
+            <div class="relative">
+              <input
+                v-model="form.password"
+                :type="showPassword ? 'text' : 'password'"
+                required
+                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 pr-10 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+              <button
+                type="button"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
+                @click="showPassword = !showPassword"
+              >
+                <span v-if="showPassword">🙈</span>
+                <span v-else>👁️</span>
+              </button>
+            </div>
           </div>
         </div>
         <div>
@@ -51,6 +61,8 @@ definePageMeta({
 })
 
 const router = useRouter()
+const showPassword = ref(false)
+
 const form = reactive({
   email: '',
   password: '',
