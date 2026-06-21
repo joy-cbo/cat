@@ -1,180 +1,114 @@
-# 🐱 猫咪管理系统 - Cloudflare 一键部署指南
+# 🐱 猫咪管理系统 - 一键部署指南
 
-> 专为零基础小白准备，跟着截图一步步操作即可！
+> ✅ 免费 | ✅ 无需安装软件 | ✅ 全程网页操作
 
 ---
 
 ## 📋 部署前准备
 
 你需要准备：
-1. 一个 GitHub 账号
-2. 一个 Cloudflare 账号（免费）
-3. 一台电脑（Windows/Mac 都可以）
+1. 一个 [GitHub](https://github.com) 账号
+2. 一个 [Cloudflare](https://dash.cloudflare.com/sign-up) 账号（免费注册）
 
 ---
 
-## 第一步：Fork 项目到你的 GitHub
+## 第 1 步：Fork 项目
 
-### 1.1 打开项目页面
+> 把项目复制一份到你自己的 GitHub
 
-在浏览器打开：https://github.com/joy-cbo/cat
+1. 打开 👉 [https://github.com/joy-cbo/cat](https://github.com/joy-cbo/cat)
+2. 点击右上角的 **Fork** 按钮（分叉图标 ↗️）
+3. 点击绿色的 **Create fork** 按钮
 
-### 1.2 点击 Fork
-
-点击右上角的 **"Fork"** 按钮（就是右上角那个分叉图标）
-
-![Fork 按钮位置：右上角]
-
-### 1.3 确认 Fork
-
-点击绿色的 **"Create fork"** 按钮
-
-完成后，你的 GitHub 上就有了 `你的用户名/cat` 仓库
+完成后你的 GitHub 上就有了 `你的用户名/cat` 仓库
 
 ---
 
-## 第二步：注册 Cloudflare 账号
+## 第 2 步：注册 Cloudflare
 
-### 2.1 打开 Cloudflare
+> 如果已有账号，直接跳到第 3 步
 
-在浏览器打开：https://dash.cloudflare.com/sign-up
-
-### 2.2 填写注册信息
-
-- Email：你的邮箱
-- Password：设置一个密码
-- 点击 **"Create account"**
-
-### 2.3 完成验证
-
-按提示完成邮箱验证
+1. 打开 👉 [https://dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up)
+2. 输入邮箱和密码
+3. 点击 **Create account**
+4. 去邮箱点击验证链接
 
 ---
 
-## 第三步：在 Cloudflare 创建资源
+## 第 3 步：创建数据库（D1）
 
-### 3.1 安装 Wrangler CLI
+1. 打开 👉 [https://dash.cloudflare.com](https://dash.cloudflare.com)
+2. 左侧点击 **Storage & databases**
+3. 点击 **D1 SQL databases**
+4. 点击 **Create a database**
+5. Database name 填：`cat-manager-db`
+6. Location 选 **Hong Kong**
+7. 点击 **Create database**
 
-打开终端（Mac 打开"终端"应用，Windows 打开"PowerShell"）
-
-**Mac 用户运行：**
-```bash
-# 安装 Homebrew（如果没有的话）
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 安装 Wrangler
-npm install -g wrangler
-```
-
-**Windows 用户运行：**
-```powershell
-npm install -g wrangler
-```
-
-### 3.2 登录 Cloudflare
-
-在终端运行：
-```bash
-wrangler login
-```
-
-浏览器会自动打开，点击 **"Allow"** 授权
-
-### 3.3 创建数据库
-
-在终端依次运行以下命令：
-
-```bash
-# 创建 D1 数据库
-wrangler d1 create cat-manager-db
-```
-
-运行后会显示类似：
-```
-✅ Successfully created DB 'cat-manager-db'
-database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-```
-
-**📝 复制这个 database_id，等下要用！**
-
-```bash
-# 创建 R2 存储桶
-wrangler r2 bucket create cat-manager-r2
-```
-
-```bash
-# 创建 KV 命名空间
-wrangler kv namespace create KV
-```
-
-运行后会显示类似：
-```
-✅ Successfully created KV namespace 'KV'
-id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-```
-
-**📝 复制这个 id，等下要用！**
+> ⚠️ 创建后会显示一个 ID，**复制保存好**，等下要用！
 
 ---
 
-## 第四步：获取 Cloudflare 账号信息
+## 第 4 步：创建文件存储（R2）
 
-### 4.1 获取 Account ID
-
-1. 打开 https://dash.cloudflare.com
-2. 点击右侧边栏的 **"Workers & Pages"**
-3. 右侧会显示 **"Account ID"**
-4. **📝 复制这个 ID！**
-
-### 4.2 获取 API Token
-
-1. 打开 https://dash.cloudflare.com/profile/api-tokens
-2. 点击 **"Create Token"**
-3. 选择 **"Cloudflare Pages - Edit"** 模板
-4. 点击 **"Continue to summary"**
-5. 点击 **"Create Token"**
-6. **📝 复制这个 Token！（只显示一次）**
+1. 左侧点击 **R2 object storage**
+2. 点击 **Create bucket**
+3. Bucket name 填：`cat-manager-r2`
+4. Location 选 **Hong Kong**
+5. 点击 **Create bucket**
 
 ---
 
-## 第五步：配置 GitHub Secrets
+## 第 5 步：创建缓存（KV）
 
-### 5.1 打开你的仓库设置
+1. 左侧点击 **Workers & Pages**
+2. 点击顶部 **KV** 标签
+3. 点击 **Create a namespace**
+4. Namespace name 填：`KV`
+5. 点击 **Add**
 
-1. 打开你的仓库：`https://github.com/你的用户名/cat`
-2. 点击 **"Settings"** 标签
-3. 左侧点击 **"Secrets and variables"** → **"Actions"**
-
-### 5.2 添加 Secrets
-
-点击 **"New repository secret"**，依次添加：
-
-| Name | Value |
-|------|-------|
-| `CLOUDFLARE_API_TOKEN` | 你刚才复制的 API Token |
-| `CLOUDFLARE_ACCOUNT_ID` | 你刚才复制的 Account ID |
+> ⚠️ 创建后会显示一个 ID，**复制保存好**，等下要用！
 
 ---
 
-## 第六步：配置数据库 ID
+## 第 6 步：获取账号 ID
 
-### 6.1 Fork 到本地
+1. 回到 Cloudflare 控制台首页
+2. 右侧边栏找到 **Account ID**
+3. 点击旁边的 **复制图标**
 
-```bash
-# 克隆你的仓库
-git clone https://github.com/你的用户名/cat.git
-cd cat
-```
+---
 
-### 6.2 修改 wrangler.toml
+## 第 7 步：创建 API 密钥
 
-用文本编辑器打开 `wrangler.toml` 文件，修改以下内容：
+1. 打开 👉 [https://dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
+2. 点击 **Create Token**
+3. 找到 **Cloudflare Pages - Edit**，点击右侧 **Use template**
+4. 直接点击 **Continue to summary**
+5. 点击 **Create Token**
+6. 点击复制 Token
+
+> ⚠️ Token 只显示一次！**复制保存好**
+
+---
+
+## 第 8 步：生成配置文件
+
+打开 👉 [一键生成配置页面](deploy.html)
+
+把你刚才复制的 ID 填入对应位置，点击生成，然后复制配置内容。
+
+生成的配置文件内容类似：
 
 ```toml
+name = "cat-manager"
+compatibility_date = "2024-09-25"
+pages_build_output_dir = ".output/public"
+
 [[d1_databases]]
 binding = "DB"
 database_name = "cat-manager-db"
-database_id = "粘贴你的database_id"  # ← 替换成第三步复制的 ID
+database_id = "你复制的D1 ID"
 
 [[r2_buckets]]
 binding = "R2"
@@ -182,118 +116,77 @@ bucket_name = "cat-manager-r2"
 
 [[kv_namespaces]]
 binding = "KV"
-id = "粘贴你的KV_ID"  # ← 替换成第三步复制的 ID
+id = "你复制的KV ID"
 
 [vars]
-JWT_SECRET = "改成一个复杂的密码"  # ← 改成你自己的密码
-```
-
-### 6.3 提交修改
-
-```bash
-git add wrangler.toml
-git commit -m "配置 Cloudflare 资源 ID"
-git push
+JWT_SECRET = "随机生成的密钥"
 ```
 
 ---
 
-## 第七步：自动部署
+## 第 9 步：粘贴配置到 GitHub
 
-推送代码后，GitHub Actions 会自动：
-1. ✅ 检查代码
-2. ✅ 构建项目
-3. ✅ 部署到 Cloudflare Pages
-
-### 7.1 查看部署状态
-
-1. 打开你的 GitHub 仓库
-2. 点击 **"Actions"** 标签
-3. 可以看到正在进行的部署
-
-### 7.2 获取访问地址
-
-部署完成后：
-
-1. 打开 https://dash.cloudflare.com
-2. 点击 **"Workers & Pages"**
-3. 找到 **"cat-manager"** 项目
-4. 点击进入，可以看到你的网站地址！
+1. 打开你的 GitHub 仓库：`https://github.com/你的用户名/cat`
+2. 点击文件列表中的 **wrangler.toml** 文件
+3. 点击右上角的 **✏️ 铅笔图标**（编辑文件）
+4. **全选删除**原有内容，粘贴刚才复制的配置
+5. 滚动到底部，点击绿色的 **Commit changes** 按钮
 
 ---
 
-## 第八步：首次访问设置
+## 第 10 步：连接 Cloudflare 并部署
 
-### 8.1 打开你的网站
+1. 回到 Cloudflare 控制台，点击 **Workers & Pages**
+2. 点击 **Create** 按钮
+3. 选择 **Pages** 标签
+4. 点击 **Connect to Git**
+5. 选择 **GitHub**，授权 Cloudflare 访问你的 GitHub
+6. 搜索并选择你的 **cat** 仓库
+7. 设置如下，然后点击 **Save and Deploy**：
 
-点击 Cloudflare 给你的地址（类似 `https://cat-manager.xxx.workers.dev`）
-
-### 8.2 注册管理员
-
-**第一个注册的用户会自动成为管理员！**
-
-1. 点击 **"注册"**
-2. 填写邮箱和密码
-3. 注册成功后自动登录
+| 设置项 | 值 |
+|--------|-----|
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Build output directory | `.output/public` |
 
 ---
 
-## 🎉 部署完成！
+## 🎉 部署成功！
 
-你现在拥有了自己的猫咪管理系统！
+你的猫咪管理系统已经上线了！
 
-- 🌐 网址：你的 Cloudflare Pages 地址
-- 📱 手机也可以访问
-- 🔒 数据安全存储在 Cloudflare
+### 下一步：
+
+1. 在 Cloudflare Pages 找到你的网站地址
+2. 打开网站，点击 **注册**
+3. 第一个注册的用户自动成为 **管理员**
+4. 开始添加你的猫咪吧！🐱
+
+> 💡 以后更新代码，只需在 GitHub 修改并推送，网站会自动更新！
 
 ---
 
 ## ❓ 常见问题
 
-### Q: 部署失败怎么办？
+### 部署失败怎么办？
 
-1. 检查 GitHub Secrets 是否正确
-2. 检查 wrangler.toml 中的 ID 是否正确
-3. 在 Actions 页面查看错误日志
+1. 检查上面填的 ID 是否正确
+2. 在 Cloudflare Pages 项目中查看部署日志
+3. 确认 GitHub 仓库的 wrangler.toml 内容正确
 
-### Q: 如何更新代码？
+### 需要花钱吗？
 
-```bash
-# 拉取最新代码
-git pull
+完全免费！Cloudflare 免费套餐：D1 数据库 5GB、R2 存储 10GB、Pages 无限部署。
 
-# 推送到 GitHub
-git push
-```
+### 数据会丢失吗？
 
-推送后会自动重新部署！
+不会！Cloudflare D1 自动备份数据，非常安全。
 
-### Q: 如何自定义域名？
+### 怎么更新网站？
 
-1. 在 Cloudflare Pages 项目中点击 **"Custom domains"**
-2. 添加你的域名
-3. 按提示配置 DNS
+在 GitHub 修改代码并推送，Cloudflare 会自动重新部署。
 
-### Q: 数据会丢失吗？
+### 手机能用吗？
 
-不会！Cloudflare D1 会自动备份你的数据。
-
-### Q: 需要付费吗？
-
-Cloudflare 免费套餐完全够用：
-- D1：免费 5GB 存储
-- R2：免费 10GB 存储
-- Pages：免费无限部署
-
----
-
-## 📞 需要帮助？
-
-如果遇到问题，可以：
-1. 查看 [Cloudflare 官方文档](https://developers.cloudflare.com/pages/)
-2. 在 GitHub 仓库提 Issue
-3. 搜索错误信息
-
----
-
-**恭喜你完成部署！🎉**
+可以！部署后手机浏览器直接访问网址即可使用。
