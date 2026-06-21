@@ -1,12 +1,13 @@
-import { drizzle as drizzleBetterSqlite3 } from 'drizzle-orm/better-sqlite3';
 import * as schema from './schema';
-import Database from 'better-sqlite3';
-import { join } from 'path';
 
 let _localDb: any = null;
 
-function getLocalDb() {
+async function getLocalDb() {
   if (_localDb) return _localDb;
+  const { default: Database } = await import('better-sqlite3');
+  const { join } = await import('path');
+  const { drizzle: drizzleBetterSqlite3 } = await import('drizzle-orm/better-sqlite3');
+
   const dbPath = join(process.cwd(), 'local.db');
   const sqlite = new Database(dbPath);
 
@@ -78,5 +79,5 @@ export async function useDb(event?: any) {
     const { drizzle: drizzleD1 } = await import('drizzle-orm/d1');
     return drizzleD1(db, { schema });
   }
-  return getLocalDb();
+  return await getLocalDb();
 }
