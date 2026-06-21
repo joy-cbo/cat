@@ -1,0 +1,19 @@
+name = "cat-manager"
+compatibility_date = "2024-09-25"
+pages_build_output_dir = ".output/public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cat-manager-db"
+database_id = "YOUR_DATABASE_ID" # 通过 wrangler d1 create cat-manager-db 获取
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "cat-manager-r2"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_ID" # 通过 wrangler kv namespace create KV 获取
+
+[vars]
+JWT_SECRET = "your-secret-key-here" # 部署前修改为强随机字符串

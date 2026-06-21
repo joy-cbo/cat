@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Nuxt build output
+.output/
+.nuxt/
+
+# Local database
+local.db
+
+# Uploads (local development)
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Wrangler
+.wrangler/
