@@ -34,7 +34,7 @@
     <!-- Progress -->
     <div class="bg-white rounded-2xl shadow-lg p-4 sticky top-0 z-50">
         <div class="flex items-center justify-between text-sm">
-            <span class="font-bold text-purple-600" id="progressText">进度：0 / 10 步</span>
+            <span class="font-bold text-purple-600" id="progressText">进度：0 / 11 步</span>
             <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
                 <div id="progressBar" class="bg-gradient-to-r from-purple-500 to-blue-500 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
             </div>
@@ -67,10 +67,6 @@
                         <span class="bg-purple-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
                         <span>点击绿色的 <strong>创建 Fork</strong> 按钮</span>
                     </div>
-                    <div class="flex items-start">
-                        <span class="bg-purple-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>完成后你的 GitHub 上就有了 <code class="bg-gray-200 px-1 rounded">你的用户名/cat</code></span>
-                    </div>
                 </div>
             </div>
             <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
@@ -94,23 +90,6 @@
                     <span class="mr-2">☁️</span> 打开 Cloudflare 注册页 →
                 </a>
             </div>
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>输入邮箱和密码</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>点击 <strong>创建账户</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>去邮箱点击验证链接</span>
-                    </div>
-                </div>
-            </div>
             <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
                 <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check2">
                 <span class="font-medium text-green-700">✅ 我已有 Cloudflare 账号</span>
@@ -118,345 +97,46 @@
         </div>
     </div>
 
-    <!-- ============ STEP 3: 创建数据库 ============ -->
+    <!-- ============ STEP 3: 创建 Pages 项目 ============ -->
     <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-green-500" id="step3">
         <div class="flex items-center mb-4">
             <span class="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">3</span>
-            <h2 class="text-xl font-bold text-gray-800">创建数据库（D1）</h2>
+            <h2 class="text-xl font-bold text-gray-800">创建 Cloudflare Pages 项目</h2>
         </div>
         <div class="space-y-3 ml-13">
-            <div class="bg-green-50 rounded-xl p-4">
-                <p class="text-sm text-gray-600 mb-3">打开 Cloudflare 控制台，创建数据库：</p>
-                <a href="https://dash.cloudflare.com" target="_blank"
-                   class="inline-flex items-center bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition font-medium">
-                    <span class="mr-2">🔗</span> 打开 Cloudflare 控制台 →
-                </a>
-            </div>
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>左侧点击 <strong>存储和数据库</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>点击 <strong>D1 SQL 数据库</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>点击 <strong>"创建数据库"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
-                        <span>数据库名称填：<code class="bg-gray-200 px-1 rounded font-bold">cat-manager-db</code></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
-                        <span>位置选离你最近的（如 <strong>东亚</strong> 或 <strong>亚太</strong>）</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
-                        <span>点击 <strong>"创建数据库"</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-                <p class="text-sm font-medium text-yellow-800 mb-2">⚠️ 创建后会显示一个 ID，把它复制粘贴到下面：</p>
-                <input type="text" id="d1Id" placeholder="粘贴 D1 数据库 ID（类似 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx）"
-                       class="w-full border border-yellow-300 rounded-lg px-4 py-2 text-sm bg-white"
-                       oninput="saveConfig()">
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check3">
-                <span class="font-medium text-green-700">✅ 我已创建数据库并填入 ID</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 4: 创建 R2 ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-cyan-500" id="step4">
-        <div class="flex items-center mb-4">
-            <span class="bg-cyan-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">4</span>
-            <h2 class="text-xl font-bold text-gray-800">创建文件存储（R2）</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>左侧点击 <strong>R2 对象存储</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>点击 <strong>"创建存储桶"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>存储桶名称填：<code class="bg-gray-200 px-1 rounded font-bold">cat-manager-r2</code></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
-                        <span>位置选离你最近的（如 <strong>东亚</strong> 或 <strong>亚太</strong>）</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
-                        <span>点击 <strong>"创建存储桶"</strong></span>
-                    </div>
-                </div>
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check4">
-                <span class="font-medium text-green-700">✅ 我已创建 R2 存储桶</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 5: 创建 KV ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-pink-500" id="step5">
-        <div class="flex items-center mb-4">
-            <span class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">5</span>
-            <h2 class="text-xl font-bold text-gray-800">创建缓存（KV）</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>左侧点击 <strong>Workers 和 Pages</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>点击顶部 <strong>"KV"</strong> 标签</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>点击 <strong>"创建命名空间"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
-                        <span>命名空间名称填：<code class="bg-gray-200 px-1 rounded font-bold">KV</code></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
-                        <span>点击 <strong>"添加"</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-                <p class="text-sm font-medium text-yellow-800 mb-2">⚠️ 创建后会显示一个 ID，把它复制粘贴到下面：</p>
-                <input type="text" id="kvId" placeholder="粘贴 KV 命名空间 ID（类似 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）"
-                       class="w-full border border-yellow-300 rounded-lg px-4 py-2 text-sm bg-white"
-                       oninput="saveConfig()">
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check5">
-                <span class="font-medium text-green-700">✅ 我已创建 KV 并填入 ID</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 6: Account ID ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-orange-500" id="step6">
-        <div class="flex items-center mb-4">
-            <span class="bg-orange-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">6</span>
-            <h2 class="text-xl font-bold text-gray-800">获取账户 ID</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>回到 Cloudflare 控制台首页</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>右侧边栏找到 <strong>"账户 ID"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>点击旁边的 <strong>复制图标</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-                <p class="text-sm font-medium text-yellow-800 mb-2">⚠️ 把账户 ID 粘贴到下面：</p>
-                <input type="text" id="accountId" placeholder="粘贴账户 ID"
-                       class="w-full border border-yellow-300 rounded-lg px-4 py-2 text-sm bg-white"
-                       oninput="saveConfig()">
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check6">
-                <span class="font-medium text-green-700">✅ 我已填入账户 ID</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 7: API Token ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-red-500" id="step7">
-        <div class="flex items-center mb-4">
-            <span class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">7</span>
-            <h2 class="text-xl font-bold text-gray-800">创建 API 密钥</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank"
-               class="inline-flex items-center bg-indigo-600 text-white px-5 py-3 rounded-xl hover:bg-indigo-700 transition font-medium text-sm">
-                <span class="mr-2">🔑</span> 打开 API 令牌页面 →
+            <a href="https://dash.cloudflare.com" target="_blank"
+               class="inline-flex items-center bg-blue-600 text-white px-5 py-3 rounded-xl hover:bg-blue-700 transition font-medium">
+                <span class="mr-2">🔗</span> 打开 Cloudflare 控制台 →
             </a>
             <div class="bg-gray-50 rounded-xl p-4 text-sm">
                 <p class="font-medium text-gray-700 mb-2">操作说明：</p>
                 <div class="space-y-2">
                     <div class="flex items-start">
-                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>点击 <strong>"创建令牌"</strong></span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>左侧点击 <strong>Workers 和 Pages</strong></span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>找到 <strong>"Cloudflare Pages - 编辑"</strong>，点击右侧 <strong>"使用模板"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>直接点击 <strong>"继续到摘要"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
-                        <span>点击 <strong>"创建令牌"</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
-                        <span>点击复制令牌</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-                <p class="text-sm font-medium text-yellow-800 mb-2">⚠️ 令牌只显示一次！粘贴到下面：</p>
-                <input type="password" id="apiToken" placeholder="粘贴 API 令牌"
-                       class="w-full border border-yellow-300 rounded-lg px-4 py-2 text-sm bg-white"
-                       oninput="saveConfig()">
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check7">
-                <span class="font-medium text-green-700">✅ 我已填入 API 令牌</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 8: 生成配置文件 ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-indigo-500 glow" id="step8">
-        <div class="flex items-center mb-4">
-            <span class="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">8</span>
-            <h2 class="text-xl font-bold text-gray-800">生成配置文件</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <p class="text-sm text-gray-600">填写完上面的 ID 后，点击下方按钮自动生成配置文件：</p>
-            
-            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl p-1">
-                <button onclick="generateConfig()" 
-                        class="w-full bg-white rounded-lg py-4 text-lg font-bold text-indigo-600 hover:bg-indigo-50 transition flex items-center justify-center">
-                    <span class="mr-2">⚡</span> 一键生成配置文件
-                </button>
-            </div>
-
-            <div id="configOutput" class="hidden">
-                <p class="text-sm text-gray-600 mb-2">✅ 配置文件已生成！点击复制按钮：</p>
-                <div class="relative">
-                    <pre id="configCode" class="bg-gray-900 text-green-400 p-4 rounded-xl text-xs overflow-x-auto max-h-64"></pre>
-                    <button onclick="copyConfig()" id="copyBtn"
-                            class="absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-lg text-sm transition">
-                        📋 复制
-                    </button>
-                </div>
-            </div>
-
-            <div id="configError" class="hidden bg-red-50 border border-red-200 rounded-xl p-4 text-sm text-red-700">
-                ⚠️ 请先填写上面所有必填的 ID
-            </div>
-
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check8">
-                <span class="font-medium text-green-700">✅ 我已复制配置文件</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 9: 粘贴配置 + 推送 ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-teal-500" id="step9">
-        <div class="flex items-center mb-4">
-            <span class="bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">9</span>
-            <h2 class="text-xl font-bold text-gray-800">粘贴配置到 GitHub</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>打开你的 GitHub 仓库：<code class="bg-gray-200 px-1 rounded">https://github.com/你的用户名/cat</code></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
-                        <span>点击文件列表中的 <strong>wrangler.toml</strong> 文件</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
-                        <span>点击右上角的 <strong>✏️ 铅笔图标</strong>（编辑文件）</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
-                        <span><strong>全选删除</strong>原有内容，粘贴刚才复制的配置</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
-                        <span>滚动到底部，点击绿色的 <strong>"提交更改"</strong> 按钮</span>
-                    </div>
-                </div>
-            </div>
-            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
-                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check9">
-                <span class="font-medium text-green-700">✅ 我已提交配置文件</span>
-            </label>
-        </div>
-    </div>
-
-    <!-- ============ STEP 10: 部署 ============ -->
-    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-emerald-500" id="step10">
-        <div class="flex items-center mb-4">
-            <span class="bg-emerald-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">10</span>
-            <h2 class="text-xl font-bold text-gray-800">连接 Cloudflare 并部署</h2>
-        </div>
-        <div class="space-y-3 ml-13">
-            <div class="bg-gray-50 rounded-xl p-4 text-sm">
-                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
-                <div class="space-y-2">
-                    <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
-                        <span>回到 Cloudflare 控制台，点击 <strong>Workers 和 Pages</strong></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
                         <span>点击 <strong>"创建"</strong> 按钮</span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
                         <span>选择 <strong>"Pages"</strong> 标签</span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
                         <span>点击 <strong>"连接到 Git"</strong></span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
                         <span>选择 <strong>GitHub</strong>，授权 Cloudflare 访问你的 GitHub</span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
                         <span>搜索并选择你的 <strong>cat</strong> 仓库</span>
                     </div>
                     <div class="flex items-start">
-                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
+                        <span class="bg-green-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
                         <span>设置如下，然后点击 <strong>"保存并部署"</strong>：</span>
                     </div>
                 </div>
@@ -469,8 +149,363 @@
                 </div>
             </div>
             <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check3">
+                <span class="font-medium text-green-700">✅ 我已完成首次部署</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 4: 创建数据库 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-cyan-500" id="step4">
+        <div class="flex items-center mb-4">
+            <span class="bg-cyan-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">4</span>
+            <h2 class="text-xl font-bold text-gray-800">创建数据库（D1）</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>左侧点击 <strong>存储和数据库</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击 <strong>D1 SQL 数据库</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击 <strong>"创建数据库"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>数据库名称填：<code class="bg-gray-200 px-1 rounded font-bold">cat-manager-db</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>位置选离你最近的（如 <strong>东亚</strong> 或 <strong>亚太</strong>）</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-cyan-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span>点击 <strong>"创建数据库"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check4">
+                <span class="font-medium text-green-700">✅ 我已创建数据库</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 5: 绑定数据库 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500" id="step5">
+        <div class="flex items-center mb-4">
+            <span class="bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">5</span>
+            <h2 class="text-xl font-bold text-gray-800">绑定数据库到 Pages</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>左侧点击 <strong>Workers 和 Pages</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击你的 <strong>cat-manager</strong> 项目</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击 <strong>"设置"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>点击左侧 <strong>"函数"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>滚动到底部找到 <strong>"D1 数据库绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span>点击 <strong>"添加绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
+                        <span>变量名称填：<code class="bg-gray-200 px-1 rounded font-bold">DB</code>，数据库选 <code class="bg-gray-200 px-1 rounded">cat-manager-db</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-blue-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑧</span>
+                        <span>点击 <strong>"保存"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check5">
+                <span class="font-medium text-green-700">✅ 我已绑定数据库</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 6: 创建 R2 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-orange-500" id="step6">
+        <div class="flex items-center mb-4">
+            <span class="bg-orange-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">6</span>
+            <h2 class="text-xl font-bold text-gray-800">创建文件存储（R2）</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>左侧点击 <strong>R2 对象存储</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击 <strong>"创建存储桶"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>存储桶名称填：<code class="bg-gray-200 px-1 rounded font-bold">cat-manager-r2</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>位置选离你最近的（如 <strong>东亚</strong> 或 <strong>亚太</strong>）</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-orange-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>点击 <strong>"创建存储桶"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check6">
+                <span class="font-medium text-green-700">✅ 我已创建 R2 存储桶</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 7: 绑定 R2 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-pink-500" id="step7">
+        <div class="flex items-center mb-4">
+            <span class="bg-pink-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">7</span>
+            <h2 class="text-xl font-bold text-gray-800">绑定 R2 到 Pages</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>回到你的 <strong>cat-manager</strong> 项目</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击 <strong>"设置"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击左侧 <strong>"函数"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>滚动到底部找到 <strong>"R2 存储桶绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>点击 <strong>"添加绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span>变量名称填：<code class="bg-gray-200 px-1 rounded font-bold">R2</code>，存储桶选 <code class="bg-gray-200 px-1 rounded">cat-manager-r2</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-pink-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
+                        <span>点击 <strong>"保存"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check7">
+                <span class="font-medium text-green-700">✅ 我已绑定 R2</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 8: 创建 KV ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-indigo-500" id="step8">
+        <div class="flex items-center mb-4">
+            <span class="bg-indigo-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">8</span>
+            <h2 class="text-xl font-bold text-gray-800">创建缓存（KV）</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-indigo-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>左侧点击 <strong>Workers 和 Pages</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-indigo-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击顶部 <strong>"KV"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-indigo-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击 <strong>"创建命名空间"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-indigo-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>命名空间名称填：<code class="bg-gray-200 px-1 rounded font-bold">KV</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-indigo-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>点击 <strong>"添加"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check8">
+                <span class="font-medium text-green-700">✅ 我已创建 KV</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 9: 绑定 KV ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-red-500" id="step9">
+        <div class="flex items-center mb-4">
+            <span class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">9</span>
+            <h2 class="text-xl font-bold text-gray-800">绑定 KV 到 Pages</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>回到你的 <strong>cat-manager</strong> 项目</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击 <strong>"设置"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击左侧 <strong>"函数"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>滚动到底部找到 <strong>"KV 命名空间绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>点击 <strong>"添加绑定"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span>变量名称填：<code class="bg-gray-200 px-1 rounded font-bold">KV</code>，命名空间选 <code class="bg-gray-200 px-1 rounded">KV</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-red-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
+                        <span>点击 <strong>"保存"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check9">
+                <span class="font-medium text-green-700">✅ 我已绑定 KV</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 10: 设置环境变量 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-teal-500" id="step10">
+        <div class="flex items-center mb-4">
+            <span class="bg-teal-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">10</span>
+            <h2 class="text-xl font-bold text-gray-800">设置环境变量</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>回到你的 <strong>cat-manager</strong> 项目</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>点击 <strong>"设置"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击左侧 <strong>"环境变量"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>点击 <strong>"添加变量"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>变量名称填：<code class="bg-gray-200 px-1 rounded font-bold">JWT_SECRET</code></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑥</span>
+                        <span>值填一个随机字符串（如 <code class="bg-gray-200 px-1 rounded">cat-abc123xyz</code>）</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-teal-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑦</span>
+                        <span>点击 <strong>"保存"</strong></span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
                 <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check10">
-                <span class="font-medium text-green-700">✅ 我已完成部署</span>
+                <span class="font-medium text-green-700">✅ 我已设置环境变量</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ============ STEP 11: 重新部署 ============ -->
+    <div class="step bg-white rounded-2xl shadow-lg p-6 border-l-4 border-emerald-500" id="step11">
+        <div class="flex items-center mb-4">
+            <span class="bg-emerald-500 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg mr-3">11</span>
+            <h2 class="text-xl font-bold text-gray-800">重新部署</h2>
+        </div>
+        <div class="space-y-3 ml-13">
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-sm">
+                <p class="font-medium text-yellow-800">⚠️ 绑定资源后必须重新部署才能生效！</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 text-sm">
+                <p class="font-medium text-gray-700 mb-2">操作说明：</p>
+                <div class="space-y-2">
+                    <div class="flex items-start">
+                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">①</span>
+                        <span>点击 <strong>"部署"</strong> 标签</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">②</span>
+                        <span>找到最新的一次部署</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">③</span>
+                        <span>点击右侧 <strong>...</strong> 菜单</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">④</span>
+                        <span>点击 <strong>"重新部署"</strong></span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-emerald-500 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs mr-2 mt-0.5 shrink-0">⑤</span>
+                        <span>等待部署完成...</span>
+                    </div>
+                </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer bg-green-50 rounded-xl p-3 hover:bg-green-100 transition">
+                <input type="checkbox" onchange="updateProgress()" class="w-5 h-5 rounded text-purple-600" id="check11">
+                <span class="font-medium text-green-700">✅ 我已完成重新部署</span>
             </label>
         </div>
     </div>
@@ -483,8 +518,8 @@
         <div class="bg-white bg-opacity-20 rounded-xl p-6 text-left max-w-md mx-auto">
             <h3 class="font-bold mb-3">下一步：</h3>
             <ol class="list-decimal list-inside space-y-2">
-                <li>在 Cloudflare Pages 找到你的网站地址</li>
-                <li>打开网站，点击 <strong>注册</strong></li>
+                <li>点击顶部的 <strong>访问站点</strong> 按钮打开你的网站</li>
+                <li>点击 <strong>注册</strong></li>
                 <li>第一个注册的用户自动成为 <strong>管理员</strong></li>
                 <li>开始添加你的猫咪吧！🐱</li>
             </ol>
@@ -501,9 +536,9 @@
             <details class="bg-gray-50 rounded-xl">
                 <summary class="p-4 cursor-pointer font-medium hover:bg-gray-100 rounded-xl transition">部署失败怎么办？</summary>
                 <div class="px-4 pb-4 text-sm text-gray-600 space-y-1">
-                    <p>1. 检查上面填的 ID 是否正确</p>
-                    <p>2. 在 Cloudflare Pages 项目中查看部署日志</p>
-                    <p>3. 确认 GitHub 仓库的 wrangler.toml 内容正确</p>
+                    <p>1. 检查绑定的名称是否正确（必须是 <code>DB</code>、<code>R2</code>、<code>KV</code>）</p>
+                    <p>2. 在部署标签页查看部署日志</p>
+                    <p>3. 绑定完成后记得重新部署</p>
                 </div>
             </details>
             <details class="bg-gray-50 rounded-xl">
@@ -545,97 +580,21 @@
 </footer>
 
 <script>
-    const STORAGE_KEY = 'cat-deploy-config';
-
-    function saveConfig() {
-        const config = {
-            d1Id: document.getElementById('d1Id').value,
-            kvId: document.getElementById('kvId').value,
-            accountId: document.getElementById('accountId').value,
-            apiToken: document.getElementById('apiToken').value,
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
-    }
-
-    function loadConfig() {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-            const config = JSON.parse(saved);
-            if (config.d1Id) document.getElementById('d1Id').value = config.d1Id;
-            if (config.kvId) document.getElementById('kvId').value = config.kvId;
-            if (config.accountId) document.getElementById('accountId').value = config.accountId;
-            if (config.apiToken) document.getElementById('apiToken').value = config.apiToken;
-        }
-    }
-
-    function generateConfig() {
-        const d1Id = document.getElementById('d1Id').value.trim();
-        const kvId = document.getElementById('kvId').value.trim();
-
-        if (!d1Id || !kvId) {
-            document.getElementById('configError').classList.remove('hidden');
-            document.getElementById('configOutput').classList.add('hidden');
-            return;
-        }
-
-        document.getElementById('configError').classList.add('hidden');
-
-        const secret = 'cat-' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-
-        const config = `name = "cat-manager"
-compatibility_date = "2024-09-25"
-pages_build_output_dir = ".output/public"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "cat-manager-db"
-database_id = "${d1Id}"
-
-[[r2_buckets]]
-binding = "R2"
-bucket_name = "cat-manager-r2"
-
-[[kv_namespaces]]
-binding = "KV"
-id = "${kvId}"
-
-[vars]
-JWT_SECRET = "${secret}"`;
-
-        document.getElementById('configCode').textContent = config;
-        document.getElementById('configOutput').classList.remove('hidden');
-    }
-
-    function copyConfig() {
-        const text = document.getElementById('configCode').textContent;
-        navigator.clipboard.writeText(text).then(() => {
-            const btn = document.getElementById('copyBtn');
-            btn.textContent = '✅ 已复制';
-            btn.classList.add('copied');
-            setTimeout(() => {
-                btn.textContent = '📋 复制';
-                btn.classList.remove('copied');
-            }, 2000);
-        });
-    }
-
     function updateProgress() {
         let done = 0;
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= 11; i++) {
             if (document.getElementById('check' + i).checked) done++;
         }
-        const percent = Math.round((done / 10) * 100);
+        const percent = Math.round((done / 11) * 100);
         document.getElementById('progressBar').style.width = percent + '%';
-        document.getElementById('progressText').textContent = `进度：${done} / 10 步`;
+        document.getElementById('progressText').textContent = `进度：${done} / 11 步`;
         document.getElementById('progressPercent').textContent = percent + '%';
 
-        if (done === 10) {
+        if (done === 11) {
             document.getElementById('doneSection').classList.remove('hidden');
             document.getElementById('doneSection').scrollIntoView({ behavior: 'smooth' });
         }
     }
-
-    loadConfig();
 </script>
 
 </body>
