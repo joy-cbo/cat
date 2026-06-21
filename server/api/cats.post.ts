@@ -1,7 +1,7 @@
 import { cats } from '~/server/database/schema';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   const body = await readBody(event);
   
   const newCat = await drizzle.insert(cats).values({

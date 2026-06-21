@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   const body = await readBody(event);
   
   // 验证输入

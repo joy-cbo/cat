@@ -2,7 +2,7 @@ import { healthRecords, cats } from '~/server/database/schema';
 import { eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   
   // 获取所有猫咪
   const allCats = await drizzle.select().from(cats);

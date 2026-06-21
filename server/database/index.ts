@@ -9,7 +9,7 @@ function getLocalDb() {
   if (_localDb) return _localDb;
   const dbPath = join(process.cwd(), 'local.db');
   const sqlite = new Database(dbPath);
-  
+
   sqlite.exec(`
     CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -67,15 +67,16 @@ function getLocalDb() {
       updated_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
   `);
-  
+
   _localDb = drizzleBetterSqlite3(sqlite, { schema });
   return _localDb;
 }
 
-export function useDb(event?: any) {
-  if (event?.context?.env?.DB) {
-    const { drizzle: drizzleD1 } = require('drizzle-orm/d1');
-    return drizzleD1(event.context.env.DB, { schema });
+export async function useDb(event?: any) {
+  const db = event?.context?.cloudflare?.env?.DB;
+  if (db) {
+    const { drizzle: drizzleD1 } = await import('drizzle-orm/d1');
+    return drizzleD1(db, { schema });
   }
   return getLocalDb();
 }

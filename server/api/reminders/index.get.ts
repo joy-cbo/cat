@@ -1,7 +1,7 @@
 import { reminders } from '~/server/database/schema';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   const query = getQuery(event);
   const catId = query.catId ? Number(query.catId) : undefined;
   

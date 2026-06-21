@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
   try {
     const decoded = jwt.verify(token, config.jwtSecret) as any;
     
-    const drizzle = useDb(event);
+    const drizzle = await useDb(event);
     
     const user = await drizzle.select().from(users).where(eq(users.id, decoded.userId));
     

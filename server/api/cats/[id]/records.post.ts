@@ -1,7 +1,7 @@
 import { healthRecords } from '~/server/database/schema';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   const catId = Number(getRouterParam(event, 'id'));
   const body = await readBody(event);
   

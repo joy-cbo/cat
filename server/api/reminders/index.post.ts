@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm';
 import { sendReminderEmail } from '~/server/utils/email';
 
 export default defineEventHandler(async (event) => {
-  const drizzle = useDb(event);
+  const drizzle = await useDb(event);
   const body = await readBody(event);
   
   const newReminder = await drizzle.insert(reminders).values({
