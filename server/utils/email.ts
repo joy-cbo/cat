@@ -1,5 +1,3 @@
-import { Resend } from 'resend';
-
 export function useEmail() {
   const config = useRuntimeConfig();
   const apiKey = config.resendApiKey || process.env.RESEND_API_KEY;
@@ -9,7 +7,7 @@ export function useEmail() {
     return null;
   }
   
-  return new Resend(apiKey);
+  return { apiKey };
 }
 
 export async function sendReminderEmail(options: {
@@ -19,9 +17,9 @@ export async function sendReminderEmail(options: {
   remindDate: string;
   notes?: string;
 }) {
-  const resend = useEmail();
+  const emailConfig = useEmail();
   
-  if (!resend) {
+  if (!emailConfig) {
     console.log('[Email] Skipping - no API key configured');
     return { success: false, message: '邮件服务未配置' };
   }
@@ -44,6 +42,9 @@ export async function sendReminderEmail(options: {
   const emoji = typeEmojis[options.type] || '📌';
   
   try {
+    const { Resend } = await import('resend');
+    const resend = new Resend(emailConfig.apiKey);
+    
     const { data, error } = await resend.emails.send({
       from: '猫咪管理系统 <onboarding@resend.dev>',
       to: options.to,
