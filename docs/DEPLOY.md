@@ -18,7 +18,7 @@
 
 1. 打开 👉 [https://github.com/joy-cbo/cat](https://github.com/joy-cbo/cat)
 2. 点击右上角的 **Fork** 按钮（分叉图标 ↗️）
-3. 点击绿色的 **Create fork** 按钮
+3. 点击绿色的 **创建 Fork** 按钮
 
 完成后你的 GitHub 上就有了 `你的用户名/cat` 仓库
 
@@ -30,7 +30,7 @@
 
 1. 打开 👉 [https://dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up)
 2. 输入邮箱和密码
-3. 点击 **Create account**
+3. 点击 **创建账户**
 4. 去邮箱点击验证链接
 
 ---
@@ -38,12 +38,12 @@
 ## 第 3 步：创建数据库（D1）
 
 1. 打开 👉 [https://dash.cloudflare.com](https://dash.cloudflare.com)
-2. 左侧点击 **Storage & databases**
-3. 点击 **D1 SQL databases**
-4. 点击 **Create a database**
-5. Database name 填：`cat-manager-db`
-6. Location 选 **Hong Kong**
-7. 点击 **Create database**
+2. 左侧点击 **存储和数据库**
+3. 点击 **D1 SQL 数据库**
+4. 点击 **创建数据库**
+5. 数据库名称填：`cat-manager-db`
+6. 位置选 **中国香港**
+7. 点击 **创建数据库**
 
 > ⚠️ 创建后会显示一个 ID，**复制保存好**，等下要用！
 
@@ -51,21 +51,21 @@
 
 ## 第 4 步：创建文件存储（R2）
 
-1. 左侧点击 **R2 object storage**
-2. 点击 **Create bucket**
-3. Bucket name 填：`cat-manager-r2`
-4. Location 选 **Hong Kong**
-5. 点击 **Create bucket**
+1. 左侧点击 **R2 对象存储**
+2. 点击 **创建存储桶**
+3. 存储桶名称填：`cat-manager-r2`
+4. 位置选 **中国香港**
+5. 点击 **创建存储桶**
 
 ---
 
 ## 第 5 步：创建缓存（KV）
 
-1. 左侧点击 **Workers & Pages**
+1. 左侧点击 **Workers 和 Pages**
 2. 点击顶部 **KV** 标签
-3. 点击 **Create a namespace**
-4. Namespace name 填：`KV`
-5. 点击 **Add**
+3. 点击 **创建命名空间**
+4. 命名空间名称填：`KV`
+5. 点击 **添加**
 
 > ⚠️ 创建后会显示一个 ID，**复制保存好**，等下要用！
 
@@ -74,7 +74,7 @@
 ## 第 6 步：获取账号 ID
 
 1. 回到 Cloudflare 控制台首页
-2. 右侧边栏找到 **Account ID**
+2. 右侧边栏找到 **账户 ID**
 3. 点击旁边的 **复制图标**
 
 ---
@@ -82,13 +82,13 @@
 ## 第 7 步：创建 API 密钥
 
 1. 打开 👉 [https://dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
-2. 点击 **Create Token**
-3. 找到 **Cloudflare Pages - Edit**，点击右侧 **Use template**
-4. 直接点击 **Continue to summary**
-5. 点击 **Create Token**
-6. 点击复制 Token
+2. 点击 **创建令牌**
+3. 找到 **Cloudflare Pages - 编辑**，点击右侧 **使用模板**
+4. 直接点击 **继续到摘要**
+5. 点击 **创建令牌**
+6. 点击复制令牌
 
-> ⚠️ Token 只显示一次！**复制保存好**
+> ⚠️ 令牌只显示一次！**复制保存好**
 
 ---
 
@@ -130,25 +130,25 @@ JWT_SECRET = "随机生成的密钥"
 2. 点击文件列表中的 **wrangler.toml** 文件
 3. 点击右上角的 **✏️ 铅笔图标**（编辑文件）
 4. **全选删除**原有内容，粘贴刚才复制的配置
-5. 滚动到底部，点击绿色的 **Commit changes** 按钮
+5. 滚动到底部，点击绿色的 **提交更改** 按钮
 
 ---
 
 ## 第 10 步：连接 Cloudflare 并部署
 
-1. 回到 Cloudflare 控制台，点击 **Workers & Pages**
-2. 点击 **Create** 按钮
+1. 回到 Cloudflare 控制台，点击 **Workers 和 Pages**
+2. 点击 **创建** 按钮
 3. 选择 **Pages** 标签
-4. 点击 **Connect to Git**
+4. 点击 **连接到 Git**
 5. 选择 **GitHub**，授权 Cloudflare 访问你的 GitHub
 6. 搜索并选择你的 **cat** 仓库
-7. 设置如下，然后点击 **Save and Deploy**：
+7. 设置如下，然后点击 **保存并部署**：
 
 | 设置项 | 值 |
 |--------|-----|
-| Production branch | `main` |
-| Build command | `npm run build` |
-| Build output directory | `.output/public` |
+| 生产分支 | `main` |
+| 构建命令 | `npm run build` |
+| 构建输出目录 | `.output/public` |
 
 ---
 
